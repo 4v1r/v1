@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avir</title>
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            color: white;
+            font-size: 24px;
+            font-family: "Comic Sans MS", cursive;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #button-container {
+            position: absolute;
+            text-align: center;
+            cursor: pointer;
+            z-index: 2; /* placer le bouton au-dessus des étoiles */
+        }
+
+        #redirect-button {
+            background-color: black; /* couleur de fond */
+            border: 2px solid white; /* bordures blanches */
+            padding: 10px 20px;
+            border-radius: 15px;
+            color: white;
+            cursor: pointer;
+            text-decoration: none; /* pour retirer la soulignement par défaut des liens */
+            display: inline-block;
+            position: relative; /* ajout pour positionner l'ombre */
+            font-family: 'Arial', sans-serif; /* changer la police d'écriture */
+        }
+
+        #redirect-button:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5), transparent 70%); /* effet d'éclaircissement */
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        #redirect-button:hover {
+            background-color: #333; /* couleur de fond au survol */
+        }
+
+        .moving-text {
+            position: absolute;
+        }
+
+        .special {
+            color: #4b70e8;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="./assets/audio.mp3" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <div id="button-container">
+        <a id="redirect-button" href="https://flipd.gg/avir" target="_blank">FLIPD</a>
+    </div>
+
+    <script>
+        let StarsCount = 0;
+
+        function createAndMoveText() {s
+            const movingText = document.createElement('div');
+            movingText.className = 'moving-text';
+
+            if (Math.random() < 0.001) {
+                movingText.classList.add('special');
+            }
+
+            movingText.textContent = '★';
+            document.body.appendChild(movingText);
+
+            const points = generateRandomPoints(3);
+            animateMovingText(movingText, points, 0);
+
+            setTimeout(() => {
+                StarsCount++;
+                createAndMoveText();
+            }, 1000);
+        }
+
+        function animateMovingText(element, points, currentIndex) {
+            const currentPoint = points[currentIndex];
+
+            const animation = element.animate([
+                { transform: 'translate(0, 0)' },
+                { transform: `translate(${currentPoint.x}px, ${currentPoint.y}px)` }
+            ], {
+                duration: 2000,
+                iterations: 1,
+                easing: 'ease-in-out'
+            });
+
+            animation.onfinish = () => {
+                if (currentIndex < points.length - 1) {
+                    animateMovingText(element, points, currentIndex + 1);
+                } else {
+                    const newPoints = generateRandomPoints(3);
+                    animateMovingText(element, newPoints, 0);
+                }
+            };
+        }
+
+        function generateRandomPoints(numPoints) {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const points = [];
+            for (let i = 0; i < numPoints; i++) {
+                const randomX = Math.random() * (centerX * 2) - centerX;
+                const randomY = Math.random() * (centerY * 2) - centerY;
+                points.push({ x: randomX, y: randomY });
+            }
+
+            return points;
+        }
+
+        createAndMoveText();
+    </script>
+</body>
+</html>
