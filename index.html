@@ -19,42 +19,6 @@
             height: 100vh;
         }
 
-        #button-container {
-            position: absolute;
-            text-align: center;
-            cursor: pointer;
-            z-index: 2; /* placer le bouton au-dessus des étoiles */
-        }
-
-        #redirect-button {
-            background-color: black; /* couleur de fond */
-            border: 2px solid white; /* bordures blanches */
-            padding: 10px 20px;
-            border-radius: 15px;
-            color: white;
-            cursor: pointer;
-            text-decoration: none; /* pour retirer la soulignement par défaut des liens */
-            display: inline-block;
-            position: relative; /* ajout pour positionner l'ombre */
-            font-family: 'Arial', sans-serif; /* changer la police d'écriture */
-        }
-
-        #redirect-button:before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.5), transparent 70%); /* effet d'éclaircissement */
-            border-radius: 20px;
-            z-index: -1;
-        }
-
-        #redirect-button:hover {
-            background-color: #333; /* couleur de fond au survol */
-        }
-
         .moving-text {
             position: absolute;
         }
@@ -66,22 +30,18 @@
 </head>
 <body>
     <audio autoplay loop>
-        <source src="./assets/audio.mp3" type="audio/wav">
+        <source src="./assets/audio.wav" type="audio/wav">
         Your browser does not support the audio tag.
     </audio>
-
-    <div id="button-container">
-        <a id="redirect-button" href="https://flipd.gg/avir" target="_blank">FLIPD</a>
-    </div>
 
     <script>
         let StarsCount = 0;
 
-        function createAndMoveText() {s
+        function createAndMoveText() {
             const movingText = document.createElement('div');
             movingText.className = 'moving-text';
 
-            if (Math.random() < 0.001) {
+            if (Math.random() < 0.001 ) {
                 movingText.classList.add('special');
             }
 
