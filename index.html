@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>★</title>
+    <title>★ avir</title>
     <meta name="robots" content="index, follow">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.js"></script>
     <style>
         body {
             margin: 0;
@@ -32,30 +31,19 @@
     </style>
 </head>
 <body>
-    <div id="overlay">
+    <script>
+        function play() {
+            var audio = document.getElementById("audio");
+            audio.play();
+
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+        }
+    </script>
+    <div id="overlay" onclick="play()">
         <p id="entertext">Click to enter...</p>
     </div>
-    <script>
-        const sound = new Howl({
-            src: ['/assets/audio.wav'],
-            html5: true,
-            loop: true
-        });
-
-        const divElements = document.getElementsByTagName('div');
-        divElements[0].addEventListener('click', () => {
-            if (divElements[0].classList.contains("hidden")) {
-                return
-            } else{
-                sound.play();
-                divElements[0].classList.add("hidden");
-                setTimeout(() => {
-                    divElements[0].style.zIndex = 0; 
-                }, 1250)
-                
-            }                     
-        })    
-    </script>
+    <audio id="audio" src="https://github.com/86PP/web/raw/main/audio.mp3"></audio>
     <script>
         let StarsCount = 0;
 
