@@ -6,6 +6,8 @@
     <title>★ avir</title>
     <meta name="robots" content="index, follow">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.js"></script>
+    <link rel="stylesheet" href="/styles.css">
     <style>
         body {
             margin: 0;
@@ -30,11 +32,30 @@
     </style>
 </head>
 <body>
-    <audio autoplay loop>
-        <source src="./assets/audio.mp3" type="audio/mp3">
-        Your browser does not support the audio tag.
-    </audio>
+    <div id="overlay">
+        <p id="entertext">Click to enter...</p>
+    </div>
+    <script>
+        const sound = new Howl({
+            src: ['/assets/audio.wav'],
+            html5: true,
+            loop: true
+        });
 
+        const divElements = document.getElementsByTagName('div');
+        divElements[0].addEventListener('click', () => {
+            if (divElements[0].classList.contains("hidden")) {
+                return
+            } else{
+                sound.play();
+                divElements[0].classList.add("hidden");
+                setTimeout(() => {
+                    divElements[0].style.zIndex = 0; 
+                }, 1250)
+                
+            }                     
+        })    
+    </script>
     <script>
         let StarsCount = 0;
 
