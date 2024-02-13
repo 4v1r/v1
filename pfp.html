@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PFP Randomizer</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+</style>
+</head>
+<body>
+    <h1>Profil Picture Randomizer</h1>
+    <img id="pfpImage" src="" alt="Random Profile Picture">
+    
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        var totalPfps = 302;
+
+        var pfps = [];
+        for (var i = 1; i <= totalPfps; i++) {
+            pfps.push("pfp" + i + ".jpg");
+        }
+
+        var randomIndex = getRandomInt(0, totalPfps - 1);
+        var randomPFP = "assets/pfps/" + pfps[randomIndex];
+
+        var currentUrl = window.location.href;
+
+        if (currentUrl.endsWith("/pfp")) {
+            document.getElementById("pfpImage").src = randomPFP;
+        }
+    </script>
+</body>
+</html>
