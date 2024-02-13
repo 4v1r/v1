@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>pfp</title>
+<title>PFP Randomizer</title>
 <style>
     body {
         margin: 0;
@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-    <img id="pfpImage" src="" alt="Random Profile Picture">
+    <img id="pfpImage" src="">
     
     <script>
         // Fonction pour obtenir un nombre aléatoire entre min et max inclus
@@ -31,13 +31,14 @@
         // Générer la liste des noms de fichiers JPG
         var pfps = [];
         for (var i = 1; i <= totalPfps; i++) {
-            pfps.push("pfp" + i + ".jpg");
+            pfps.push("assets/pfps/pfp" + i + ".jpg");
         }
 
         // Sélection aléatoire d'un fichier JPG parmi la liste
         var randomIndex = getRandomInt(0, totalPfps - 1);
-        var randomPFP = "assets/pfps/" + pfps[randomIndex];
+        var randomPFP = pfps[randomIndex];
 
+        // Charger l'image aléatoire
         document.getElementById("pfpImage").src = randomPFP;
     </script>
 </body>
