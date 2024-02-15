@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>★ owo</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+</style>
+</head>
+<body>
+    <img id="pfpImage" src="">
+    
+    <script>
+        // Fonction pour obtenir un nombre aléatoire entre min et max inclus
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Nombre total de fichiers JPG
+        var totalPfps = 3;
+
+        // Générer la liste des noms de fichiers JPG
+        var pfps = [];
+        for (var i = 1; i <= totalPfps; i++) {
+            pfps.push("assets/test/pfp" + i + ".jpg");
+        }
+
+        // Sélection aléatoire d'un fichier JPG parmi la liste
+        var randomIndex = getRandomInt(0, totalPfps - 1);
+        var randomPFP = pfps[randomIndex];
+
+        // Charger l'image aléatoire
+        document.getElementById("pfpImage").src = randomPFP;
+    </script>
+</body>
+</html>
