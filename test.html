@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>★ test-</title>
+<title>★ test?</title>
 </head>
 <body style="display: block;-webkit-user-select: none;margin: 0px; height: 100%; background-color: rgb(14, 14, 14);transition: background-color 300ms;">
     <img id="pfpImage" src="">
@@ -22,7 +22,15 @@
         var randomIndex = getRandomInt(0, totalPfps - 1);
         var randomPFP = pfps[randomIndex];
 
-        document.getElementById("pfpImage").src = randomPFP;
+        // Vérifier l'extension de l'URL
+        var url = window.location.href;
+        if (url.endsWith('.png')) {
+            // Charger une image aléatoire si l'URL se termine par .png
+            document.getElementById("pfpImage").src = randomPFP;
+        } else {
+            // Charger une image aléatoire si l'URL ne se termine pas par .png
+            document.getElementById("pfpImage").src = randomPFP;
+        }
     </script>
 </body>
 </html>
