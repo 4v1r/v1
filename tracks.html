@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>audio files</title>
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            transition: background-color 0.5s ease;
+        }
+
+        #dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>volume warning</h1>
@@ -24,5 +35,16 @@
             </audio>
         </li>
     </ul>
+
+    <button id="dark-mode-toggle">Dark Mode</button>
+
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>
