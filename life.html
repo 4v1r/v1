@@ -16,8 +16,8 @@
         }
         .scrolling-text {
             position: absolute;
-            top: 2.5%;
-            left: 0;
+            top: 2.5%; /* Position du texte en haut de l'écran */
+            left: 0; /* Début du texte sur le côté gauche de l'écran */
             white-space: nowrap;
             animation: scroll 10s linear infinite;
             color: white;
@@ -30,8 +30,8 @@
         }
         video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain; /* Affiche la vidéo sans zoom, en conservant ses proportions */
         }
     </style>
 </head>
