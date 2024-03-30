@@ -6,10 +6,18 @@
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>end my life</title>
     <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            background-color: #000;
+        }
         .scrolling-text {
             position: absolute;
-            top: 10%; /* Position du texte en haut de l'écran */
-            left: 0; /* Début du texte sur le côté gauche de l'écran */
+            top: 2.5%;
+            transform: translateY(-50%);
             white-space: nowrap;
             animation: scroll 10s linear infinite;
             color: white;
@@ -28,7 +36,7 @@
     </style>
 </head>
 <body>
-    <div class="scrolling-text">avir is dead :x</div>
+    <div class="scrolling-text">avir is dead?</div>
     <video controls autoplay>
         <source src="assets/end.mp4" type="video/mp4">
         Your browser does not support the video tag.
